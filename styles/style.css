@@ -5,6 +5,7 @@ body{
     font-family: Roboto;
     margin: 0;
 }
+
 .main-component{
     width: 342px;
     margin: 0 auto;
@@ -138,6 +139,5 @@ form{
 @media screen and (max-width: 768px) {
     .main-component{
         width: 80%;
-        /*min-height: 80%;*/
     }
 }
