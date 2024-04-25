@@ -1,112 +1,121 @@
-body{
+body {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     font-family: Roboto;
-    margin: 0;
+    margin: 0
 }
 
-.main-component{
+.main-component {
     width: 342px;
-    margin: 0 auto;
-    background: rgba(251, 251, 251, 1);
+    margin: auto auto;
+    background: #fbfbfb;
     text-align: center;
     border-radius: 32px;
     padding: 24px;
-    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,.15)
 }
 
-h1{
+h1 {
     font-family: Roboto;
     font-size: 32px;
     font-weight: 600;
     line-height: 32px;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 24px
 }
 
-p{
+p {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 400;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 24px
 }
 
-.input{
-    /*padding-left: 16px;*/
+.input-group {
     height: 35px;
     border-radius: 18px;
-    border: 1px solid rgba(19, 17, 38, 1);
+    border: 1px solid #131126;
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 24px
 }
 
-.input input{
-    border: none;
-    background: none;
+.input-group input {
+    border: 0;
+    background: 0 0;
     font-size: 16px;
     font-family: Roboto;
     padding-left: 16px;
     width: 100%;
-    height: 100%;
+    height: 100%
 }
 
-input::placeholder{
-    color: rgba(19, 17, 38, 0.6);
+input::placeholder {
+    color: rgba(19,17,38,.6)
 }
 
-input:focus{
-    outline: none;
+input:focus {
+    outline: 0
 }
 
-button{
+button {
     height: 35px;
     border-radius: 18px;
-    border: none;
-    background-color: rgba(19, 17, 38, 1);
-    color: white;
-    font-size: 16px;
+    border: 0;
+    background-color: #131126;
+    color: #fff;
+    font-size: 16px
 }
 
-button:hover{
-    cursor: pointer;
+button:disabled{
+    background-color: grey;
+    cursor: unset!important;
 }
 
-img{
+button:hover {
+    cursor: pointer
+}
+
+img {
     width: 165px;
     height: 120px;
-    padding-right: 16px;
+    padding-right: 16px
 }
 
-form{
+form {
     position: relative;
     display: flex;
-    flex-direction: column;
-    /*gap: 24px;*/
-}
-.eye-icon{
-    max-width: 16px;
-    max-height: 16px;
+    flex-direction: column
 }
 
-.notification{
+.eye-icon {
+    max-width: 16px;
+    max-height: 16px
+}
+
+.eye-icon:hover {
+    cursor: pointer
+}
+
+.modal {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(19, 17, 38, 0.2);
-    backdrop-filter: blur(2px);
+    background-color: rgba(19,17,38,.2);
+    backdrop-filter: blur(2px)
 }
 
-.notification:has(.success){
+.modal:has(.success) {
     background-color: unset;
-    backdrop-filter: unset;
+    backdrop-filter: unset
 }
 
-.message{
-    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.15);
-    background-color: rgba(251, 251, 251, 1);
+.message {
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,.15);
+    background-color: #fbfbfb;
     z-index: 100;
     width: 275px;
     text-align: center;
@@ -116,38 +125,47 @@ form{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /*left: 35%;*/
+    transform: translate(-50%,-50%)
 }
 
-.message button{
-    width: 138px;
+.message button {
+    width: 138px
 }
 
-
-.message img{
+.message img {
     height: 100px;
-    width: 100px;
+    width: 100px
 }
 
 .invalid-input {
-    border-color: red;
+    border-color: red
 }
 
-.validation-failed{
+.validation-failed {
     text-align: left;
     color: red;
-    margin: 0 0 12px;
+    margin: 0 0 12px
+}
+
+footer {
+    margin-top: auto;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center
+}
+
+footer span {
+    font-weight: 700;
 }
 
 .main-component:has(.invalid-input){
-    .input:first-of-type{
+    .input-group:first-of-type{
         margin-bottom: 12px;
     }
 }
 
-@media screen and (max-width: 768px) {
-    .main-component{
-        width: 80%;
+@media screen and (max-width:768px) {
+    .main-component {
+        width: 80%
     }
 }
