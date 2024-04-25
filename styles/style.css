@@ -40,6 +40,7 @@ p{
     border: 1px solid rgba(19, 17, 38, 1);
     display: flex;
     align-items: center;
+    margin-bottom: 24px;
 }
 
 .input input{
@@ -69,6 +70,10 @@ button{
     font-size: 16px;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 img{
     width: 165px;
     height: 120px;
@@ -79,7 +84,7 @@ form{
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    /*gap: 24px;*/
 }
 .eye-icon{
     max-width: 16px;
@@ -130,10 +135,15 @@ form{
 }
 
 .validation-failed{
-    position: absolute;
-    top: 36px;
+    text-align: left;
     color: red;
-    margin: 0;
+    margin: 0 0 12px;
+}
+
+.main-component:has(.invalid-input){
+    .input:first-of-type{
+        margin-bottom: 12px;
+    }
 }
 
 @media screen and (max-width: 768px) {
