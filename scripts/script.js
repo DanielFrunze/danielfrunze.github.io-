@@ -67,7 +67,7 @@ const showPassword = (e) => {
 
 const resetPassword = async (resetPasswordObj) => {
     try {
-        const response = await fetch("http://127.0.0.1:450/api/v2/User/ResetPassword", {
+        const response = await fetch("https://api-backoffice-demo.makeree.com/api/User/ResetPassword", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
