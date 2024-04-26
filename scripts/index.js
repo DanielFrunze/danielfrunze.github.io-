@@ -5,6 +5,14 @@ const submitPasswordButton = document.querySelector('button');
 const mainComponent = document.querySelector('.main-component');
 const searchParams = new URLSearchParams(window.location.search);
 const resetPasswordObj = {
+    email: searchParams
+}
+
+if(searchParams.has('email')){
+    resetPasswordObj.email = searchParams.get('email')
+}
+if(searchParams.has('resetcode')){
+    resetPasswordObj.resetPasswordCode = searchParams.get('resetcode')
 }
 function debounce(func, timeout = 1000){
     let timer;
