@@ -169,3 +169,7 @@ footer span {
         width: 80%
     }
 }
+
+footer img {
+    display: none;
+}
