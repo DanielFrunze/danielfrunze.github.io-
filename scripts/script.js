@@ -25,18 +25,18 @@ function debounce(func, timeout = 1000){
 
 const modalData = {
     denied: {
-        image: '../images/denied_icon.png',
+        image: './images/denied_icon.png',
         message: 'Oops something went wrong.',
         description: 'Please retry',
         button: true
     },
     success: {
-        image: '../images/success_icon.png',
+        image: './images/success_icon.png',
         message: 'Password changed!',
         description: 'Your password has been successfully changed.',
     },
     expired: {
-        image: '../images/expired_icon.png',
+        image: './images/expired_icon.png',
         message: 'Link expired!',
         description: 'This password reset link has expired. Please make a new password reset request from the app.'
     }
