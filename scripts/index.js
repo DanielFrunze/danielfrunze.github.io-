@@ -8,19 +8,25 @@ const resetPasswordObj = {
     email: searchParams
 }
 
-if(searchParams.has('email')){
-    resetPasswordObj.email = searchParams.get('email')
+const checkForRequiredParams = () => {
+    if(searchParams.has('email') && searchParams.has('resetcode')){
+        resetPasswordObj.email = searchParams.get('email');
+        resetPasswordObj.resetPasswordCode = searchParams.get('resetcode');
+        mainComponent.style.display = 'block'
+    } else {
+        modalData['expired'].description = 'Access denied'
+        modalData['expired'].message = 'Access denied'
+        mainComponent.outerHTML = createModal('expired');
+    }
 }
-if(searchParams.has('resetcode')){
-    resetPasswordObj.resetPasswordCode = searchParams.get('resetcode')
-}
-function debounce(func, timeout = 1000){
-    let timer;
-    return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => { func.apply(this, args); }, timeout);
-    };
-}
+
+// function debounce(func, timeout = 1000){
+//     let timer;
+//     return (...args) => {
+//         clearTimeout(timer);
+//         timer = setTimeout(() => { func.apply(this, args); }, timeout);
+//     };
+// }
 
 const modalData = {
     denied: {
@@ -124,7 +130,7 @@ const checkRequestStatus = (requestStatus) => {
 
 const submitForm = async (event) => {
     event.preventDefault();
-    if(passwordInput.value) {
+    if(passwordInput.value && resetPasswordObj.resetPasswordCode && resetPasswordObj.email ) {
         resetPasswordObj.newPassword = md5(passwordInput.value);
         try {
             const requestStatus = await resetPassword(resetPasswordObj);
@@ -135,8 +141,10 @@ const submitForm = async (event) => {
     }
 }
 
-passwordInput.addEventListener('input', debounce(() => validatePassword()));
-repeatPasswordInput.addEventListener('input', debounce(() => validatePassword()));
+checkForRequiredParams()
+
+passwordInput.addEventListener('input', validatePassword);
+repeatPasswordInput.addEventListener('input',  validatePassword);
 submitPasswordButton.addEventListener('click', submitForm);
 eyeIcons.forEach(item => item.addEventListener('click', showPassword));
 

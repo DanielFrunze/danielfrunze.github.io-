@@ -8,6 +8,7 @@ body {
 }
 
 .main-component {
+    display: none;
     width: 342px;
     margin: auto auto;
     background: #fbfbfb;
