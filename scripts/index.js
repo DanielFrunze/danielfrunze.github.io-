@@ -89,23 +89,23 @@ const resetPassword = async (resetPasswordObj) => {
 const validatePassword = () => {
     const errorMessage = passwordInput.parentElement.nextElementSibling;
     const isPasswordValid = passwordInput.value.match(/^.{8,}$/);
-    const arePasswordsMatching = passwordInput.value === repeatPasswordInput.value;
+    const arePasswordsMatching = (passwordInput.value === repeatPasswordInput.value);
 
     if (errorMessage && errorMessage.tagName === 'P') {
         passwordInput.parentElement.classList.remove('invalid-input');
         repeatPasswordInput.parentElement.classList.remove('invalid-input');
-        submitPasswordButton.disabled = false;
+        submitPasswordButton.disabled = !isPasswordValid && arePasswordsMatching;
         errorMessage.remove();
     }
 
-    if (!isPasswordValid) {
-        passwordInput.parentElement.insertAdjacentHTML('afterend', '<p class="validation-failed">The password should contain at least 8 characters. Please retry.</p>');
+    if (!isPasswordValid && !passwordInput.value.match(/^.{8,}$/)) {
+        passwordInput.parentElement.insertAdjacentHTML('afterend', '<p class="validation-failed">The password should contain at least 8 characters.</p>');
         passwordInput.parentElement.classList.add('invalid-input');
         submitPasswordButton.disabled = true;
-    } else if (!arePasswordsMatching) {
+    } else if (!arePasswordsMatching && !repeatPasswordInput.value.match(/^.{8,}$/)) {
         repeatPasswordInput.parentElement.classList.add('invalid-input');
         passwordInput.parentElement.classList.add('invalid-input');
-        passwordInput.parentElement.insertAdjacentHTML('afterend', '<p class="validation-failed">The passwords are not matching. Please retry.</p>');
+        passwordInput.parentElement.insertAdjacentHTML('afterend', '<p class="validation-failed">The passwords are not matching.</p>');
         submitPasswordButton.disabled = true;
     }
 };
