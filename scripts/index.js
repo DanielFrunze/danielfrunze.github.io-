@@ -65,9 +65,17 @@ const handleModalClose = () => {
     if (modal) modal.outerHTML = '';
 }
 
-const showPassword = (e) => {
-    const passwordInput = e.target.parentNode.firstElementChild;
+const togglePasswordVisibility = (event) => {
+    const eyeIcon = event.target;
+    const passwordInput = eyeIcon.parentNode.firstElementChild;
+
     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+
+    if (passwordInput.type === 'text') {
+        eyeIcon.src = './images/eye_open.png';
+    } else {
+        eyeIcon.src = './images/eye_closed.png';
+    }
 }
 
 const resetPassword = async (resetPasswordObj) => {
@@ -160,7 +168,7 @@ checkForRequiredParams()
 passwordInput.addEventListener('input', validatePassword);
 repeatPasswordInput.addEventListener('input',  validatePassword);
 submitPasswordButton.addEventListener('click', submitForm);
-eyeIcons.forEach(item => item.addEventListener('click', showPassword));
+eyeIcons.forEach(item => item.addEventListener('click', togglePasswordVisibility));
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('close-btn')) {

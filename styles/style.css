@@ -7,6 +7,11 @@ body {
     margin: 0
 }
 
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
 .main-component {
     display: none;
     width: 342px;
