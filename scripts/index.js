@@ -80,7 +80,7 @@ const togglePasswordVisibility = (event) => {
 
 const resetPassword = async (resetPasswordObj) => {
     try {
-        const response = await fetch("https://api-demo.makeree.com/api/v2/user/ResetPassword", {
+        const response = await fetch("https://api.makeree.com/api/v2/user/ResetPassword", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
